@@ -297,13 +297,14 @@ func (c *Controller) syncHandler(key string) error {
 	// should update the Secret resource.
 	now := time.Now()
 
-	loc, _ := time.LoadLocation("Asia/Shanghai")
+	loc, _ := time.LoadLocation("Local")
 	formatTime,_:=time.ParseInLocation("2006-01-02-15-04-05",secret.Annotations["updateTime"],loc)
-
 	s :=now.Sub(formatTime).Hours()/24
+
 	t := float64(cert.Spec.ValidityPeriod)
 	remain := int(t-s)
-	if remain > 0 {
+	if remain < 0 {
+		log.Println("update cert")
 		klog.V(4).Infof("Cert %s ;updateTime: %s", name, secret.GetCreationTimestamp().Format("2006-01-02 15:04:05"))
 		secret, err = c.kubeclientset.CoreV1().Secrets(cert.Namespace).Update(newSecret(cert))
 	}
