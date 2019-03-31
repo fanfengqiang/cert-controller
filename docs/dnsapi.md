@@ -190,7 +190,7 @@ You will need your login credentials (Partner ID+Password) to the Resellerinterf
 
 ## 18. Use Gandi LiveDNS API
 You must enable the new Gandi LiveDNS API first and the create your api key, See: http://doc.livedns.gandi.net/
-``````
+```
 .spec.env.GANDI_LIVEDNS_KEY: "fdmlfsdklmfdkmqsdfk"
 .spec.tpye: dns_gandi_livedns
 ```
@@ -720,3 +720,5 @@ Set the path to your zone file, and path to duende's pid file (see, [`duende(8)`
 .spec.tpye: dns_maradns
 .spec.tpye: dns_myapi
 ```
+
+
