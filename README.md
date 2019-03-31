@@ -20,6 +20,7 @@
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/fanfengqiang/cert-controller/master/deploy/cert-controller-rbac.yaml
 kubectl apply -f https://raw.githubusercontent.com/fanfengqiang/cert-controller/master/deploy/cert-controller-deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/fanfengqiang/cert-controller/master/deploy/crd.yaml
 ```
 2. 编写cert资源清单并应用
 
