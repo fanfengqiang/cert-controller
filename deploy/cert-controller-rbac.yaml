@@ -1,0 +1,28 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: cert-controller
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs: ["*"]
+  - apiGroups:
+      - certcontroller.5ik8s.com
+    resources: ["*"]
+    verbs: ["*"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: cert-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cert-controller
+subjects:
+- kind: ServiceAccount
+  name: cert-controller
+  namespace: kube-system

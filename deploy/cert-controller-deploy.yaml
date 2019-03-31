@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cert-controller
+  namespace: kube-system
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    k8s-app: cert-controller
+  name: cert-controller
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: cert-controller
+  template:
+    metadata:
+      labels:
+        k8s-app: cert-controller
+    spec:
+      containers:
+      - name: cert-controller
+        image: cert-controller:v0.1
+      serviceAccountName: cert-controller
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
