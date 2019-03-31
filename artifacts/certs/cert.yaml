@@ -1,0 +1,12 @@
+apiVersion: certcontroller.5ik8s.com/v1beta1
+kind: Cert
+metadata:
+  name: example-cert
+spec:
+  secretName: example-cert-fanfengqiang.com
+  domain: fanfengqiang.com
+  validityPeriod: 30
+  type: dns_ali
+  env:
+    Ali_Key: "LTAXXXXXXX1B35"
+    Ali_Secret: "7SO3AXXXXXXXXXXXXXXXXXXXtkpyMm"
