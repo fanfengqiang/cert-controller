@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: cert-controller
-        image: cert-controller:v0.1
+        image: fanfengqiang/cert-controller:v0.1
       serviceAccountName: cert-controller
       tolerations:
       - key: node-role.kubernetes.io/master
